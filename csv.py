@@ -10,6 +10,7 @@ def getfile(name: str):
     t = f.read()
     f.close()
     return t
+
 def putfile(name: str, txt):
     f = open(name, "w")
     f.write(txt)
@@ -50,4 +51,5 @@ def main(argv):
     putfile(name + ".html", result)
     return 0
 
-exit(main(sys.argv))
+if __name__ = "__main__":
+    exit(main(sys.argv))
