@@ -22,7 +22,7 @@ def split(csv):
     i = 0
     while i < len(csv):
         if csv[i] == '"':
-            if i == 0 or csv[i - 1] != '\\':
+            if i == 0 or csv[i - 1] != '"':
                 cnt += 1
         elif csv[i] in [',', ';'] and cnt % 2 == 0:
             now = csv.index(',', i)
