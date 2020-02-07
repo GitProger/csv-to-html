@@ -36,20 +36,21 @@ def parse(s):
     return "".join(list(map(lambda x: tag("td", x), items)))
 
 def main(argv):
-    if len(argv) != 1:
+    if len(argv) <= 1:
         print("No argument.")
         return -1
-    name = argv[0]
-    if argv[name.find(".", -1):] != ".csv":
+    name = argv[1]
+    if name[name.rfind("."):] != ".csv":
         print("Not a CSV file.")
         return -2
-    csv = getfile(argv).split("\n")
+    csv = getfile(name).split("\n")
     result = "<table border=1>"
     for s in csv:
-        result += "<tr>" + parse(s) + "</tr>"
+        if s:
+            result += "<tr>" + parse(s) + "</tr>"
     result += "</table>"
     putfile(name + ".html", result)
     return 0
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     exit(main(sys.argv))
